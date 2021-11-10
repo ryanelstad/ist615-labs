@@ -15,6 +15,10 @@ In this lab, we will use demonstrate how containerization make it easy to deploy
 
 ### Prep your lab environment. 
 
+Login for VM
+username: localadmin
+password: SU44orange!
+
 1. Open the PowerShell Prompt
 2. Change the working directory folder to `ist615-labs`  
 `PS > cd ist615-labs`
