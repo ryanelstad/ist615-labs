@@ -16,14 +16,12 @@ In this lab, we will use demonstrate how containerization make it easy to deploy
 ### Prep your lab environment. 
 
 1. Open the PowerShell Prompt
-2. Change the working directory folder to `ist346-labs`  
-`PS > cd ist346-labs`
+2. Change the working directory folder to `ist615-labs`  
+`PS > cd ist615-labs`
 3. IMPORTANT: This lab requires access to Docker's internals, you must enter this command:  
-`PS ist346-labs> $Env:COMPOSE_CONVERT_WINDOWS_PATHS=1`
-3. Update your git repository to the latest version:  
-`PS ist346-labs> git pull origin master`
+`PS ist615-labs> $Env:COMPOSE_CONVERT_WINDOWS_PATHS=1`
 4. Change the working directory to the `lab-I` folder:  
-`PS ist346-labs> cd lab-I`
+`PS ist615-labs> cd lab-I`
 
 
 ## Step 1: Create a new Heroku account
@@ -43,7 +41,7 @@ For this lab we are going to create a cloud database service to work with, this 
 1. If not already, login to Heroku
 2. Create a new app to deploy to.
 ![Create a new App](assets/createnewapp.png)
-3. Give your new app the name `ist346-netid` for example my app would be `ist346-mafudge`  and click create app.
+3. Give your new app the name `ist615-netid` for example my app would be `ist615-relstad`  and click create app.
 4. Back at the dashboard, click the name of your new application.
 5. Under the app overview, click on configure add-ons
 ![Add Ons](assets/addon.png)
@@ -61,7 +59,7 @@ For this lab we are going to create a cloud database service to work with, this 
 
 To get started start the up the Drupal application. Navigate to the lab-I folder in your terminal. Then bring up the drupal container:
 
-`PS ist346-labs\lab-I> docker-compose up -d`
+`PS ist615-labs\lab-I> docker-compose up -d`
 
 When its finished building the container from the `Dockerfile` you should see:
 
@@ -90,7 +88,7 @@ You will see the setup screen:
 5. Next you will be at the screen for configuring the site. 
    a. For the `Site Email Address` enter your own email address.
    b. For `site maintenance account` enter `admin`
-   c. For the `password` enter `IST346`
+   c. For the `password` enter `IST615`
    d. For `default country` select `United States`
    e. For `default time zone` choose `UTC`
    f. click `save and continue` 
@@ -103,7 +101,7 @@ After another minute you should see the Umami website we created with Drupal.
 Auth0 is a cloud-based authentication as a service offering. It allows our application to authenticate from a variety of sources, and we will use it to allow users to login to our site with their Google accounts. It is also free to get started and try out. Auth0 uses the OAuth2 authentication protocol to authenticate users. This protocol is used by a variety of vendors such as Facebook, Twitter, Microsoft and Google. You can learn more about [OAuth2](https://oauth.net/2/) on the web. We will use Auth0 to configure Drupal to authenticate users.
 
 1. First create an Auth0 account by heading to the signup page: [https://auth0.com/signup](https://auth0.com/signup).
-2. You need to select a `Tenant Domain` for Auth0 for the API endpoints. Enter `ist346netid` for this value. For example my Tenant Domain is `ist346mafudge` then click `Next`.
+2. You need to select a `Tenant Domain` for Auth0 for the API endpoints. Enter `ist615netid` for this value. For example my Tenant Domain is `ist615relstad` then click `Next`.
 3. Your `Account Type` should be  `Personal` and your `Role` should be `Non-Developer`. For project select `Just playing around` and click `Create Account` 
 2. Once your account is created, you should have access to the dashboard shown below
 ![Auth0 Dashboard](assets/auth0dash.png)
@@ -148,9 +146,9 @@ Now that Auth0 is setup we can install the Auth0 drupal module, the module is al
 
 Whew!! that was a lot of work, but what happens when I restart my container? EVERYTHING WILL BE GONE! A lot of effort when in to building this site EXACTLY the way we want it. Wouldn't it be nice to save the changes we've made in this container so we can run it in the cloud? That's what we will do next!
 
-1. Create a new image of our Drupal website. Be sure to use the app name you created when you setup Heroku. It should be `ist346-netid` for example my command is:    `docker commit lab-i_drupal_1 registry.heroku.com/ist346-mafudge/web`  
+1. Create a new image of our Drupal website. Be sure to use the app name you created when you setup Heroku. It should be `ist346-netid` for example my command is:    `docker commit lab-i_drupal_1 registry.heroku.com/ist615-relstad/web`  
 Yours should be:  
-`PS ist346-labs\lab-I> docker commit lab-i_drupal_1 registry.heroku.com/ist346-NETID/web` where you replace `NETID` with your netid.
+`PS ist615-labs\lab-I> docker commit lab-i_drupal_1 registry.heroku.com/ist346-NETID/web` where you replace `NETID` with your netid.
 
 2. The `docker commit` command creates an image from your running container. You can check to make sure the image is there by typing:  
 `PS ist346-labs\lab-I> docker images`   
