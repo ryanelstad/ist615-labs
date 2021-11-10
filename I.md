@@ -146,31 +146,31 @@ Now that Auth0 is setup we can install the Auth0 drupal module, the module is al
 
 Whew!! that was a lot of work, but what happens when I restart my container? EVERYTHING WILL BE GONE! A lot of effort when in to building this site EXACTLY the way we want it. Wouldn't it be nice to save the changes we've made in this container so we can run it in the cloud? That's what we will do next!
 
-1. Create a new image of our Drupal website. Be sure to use the app name you created when you setup Heroku. It should be `ist346-netid` for example my command is:    `docker commit lab-i_drupal_1 registry.heroku.com/ist615-relstad/web`  
+1. Create a new image of our Drupal website. Be sure to use the app name you created when you setup Heroku. It should be `ist615-netid` for example my command is:    `docker commit lab-i_drupal_1 registry.heroku.com/ist615-relstad/web`  
 Yours should be:  
-`PS ist615-labs\lab-I> docker commit lab-i_drupal_1 registry.heroku.com/ist346-NETID/web` where you replace `NETID` with your netid.
+`PS ist615-labs\lab-I> docker commit lab-i_drupal_1 registry.heroku.com/ist615-NETID/web` where you replace `NETID` with your netid.
 
 2. The `docker commit` command creates an image from your running container. You can check to make sure the image is there by typing:  
-`PS ist346-labs\lab-I> docker images`   
-and be on the lookout for `registry.heroku.com/ist346-mafudge/web`
+`PS ist615-labs\lab-I> docker images`   
+and be on the lookout for `registry.heroku.com/ist615-relstad/web`
 
 3. Next we need to install the Heroku Command-Line Interface (CLI) on our computer so we can send the image to Heroku. The instructions can be found here:  [https://devcenter.heroku.com/articles/heroku-cli](https://devcenter.heroku.com/articles/heroku-cli)  
 When using an ITELL Virtual Machine to do these labs, we should install the 64-bit windows version.
 4. After installation completes, you will need to open a new PowerShell window for the software to be recognized.
 5. Login to Heroku:
-`PS ist346-labs\lab-I> heroku login`  
+`PS ist615-labs\lab-I> heroku login`  
 Enter your Heroku login credentials.
 4. Then you need to login to the container registry. A container registry is a cloud service where you can push or pull docker images.
-`PS ist346-labs\lab-I> heroku container:login`
+`PS ist615-labs\lab-I> heroku container:login`
 5. Once logged in you can push your new image:
-`PS ist346-labs\lab-I> docker push registry.heroku.com/ist346-NETID/web` again replace `NETID` with your netid.
+`PS ist615-labs\lab-I> docker push registry.heroku.com/ist615-NETID/web` again replace `NETID` with your netid.
 6. With the image pushed to Heroku, we can deploy the app!  
 First you need to configure our app allow an HTTP server to run in Heroku (Your only need to run this once)  
-`PS ist346-labs\lab-I> heroku labs:enable -a ist346-NETID runtime-new-layer-extract` where `NETID` is your netid.  
-`PS ist346-labs\lab-I> heroku container:release -a ist346-NETID web` again where `NETID` is your netid.
+`PS ist615-labs\lab-I> heroku labs:enable -a ist615-NETID runtime-new-layer-extract` where `NETID` is your netid.  
+`PS ist615-labs\lab-I> heroku container:release -a ist615-NETID web` again where `NETID` is your netid.
 
 7. Now see if your application deployed! Go to Heroku [https://dashboard.heroku.com](https://dashboard.heroku.com), click on your application and click the `open app` button in the upper right corner of the screen!  
-8. Your website should be https://ist346-NETID.herokuapp.com 
+8. Your website should be https://ist615-NETID.herokuapp.com 
 
 ## Step 7: On Your Own
 
